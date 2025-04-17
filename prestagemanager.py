@@ -239,7 +239,7 @@ def print_bad_device_report():
 ###### BEGIN MAIN FUNCTION DEFINITION
 #######################################################################
 
-# Main program is wrapped in its own function to facilitate killing the API token 
+# Main program is wrapped in a try-except to facilitate killing the API token 
 # if CTRL+C is pressed at any time in the program.
 try:
 
