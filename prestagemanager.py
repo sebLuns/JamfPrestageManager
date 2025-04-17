@@ -517,6 +517,7 @@ try:
                         print(f"\nAttempting to move device {serial} to {scope_names[default_prestage_id]}") 
                         move_devices(url=scopes_url + default_prestage_id, url_suffix=add_scope_suffix, devices=[serial])
 
+    # Moves all devices in bulk transfers
     if speed.lower() == "bulk":
 
         for serial in target_serials:
