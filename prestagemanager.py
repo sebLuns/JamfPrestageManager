@@ -56,7 +56,7 @@ bad_device_report = []
 
 
 #######################################################################
-###### BEGIN USER-DEFINED DEFAULTS
+###### BEGIN USER-SUPPLIED VARIABLES
 #######################################################################
 
 # Variables can be defined here to skip configuring 
@@ -361,15 +361,20 @@ try:
 
     while target_id == "" or target_id.lower() == "list":
         print("\nEnter the ID or name of the prestage you wish to target.")
+        print("Type \"-1\" to leave extra devices unassigned from any prestage.")
+        if jamf_set_default_id != "":
+            print(f"Leave blank to use default Prestage set in Jamf ({scope_names[jamf_set_default_id]}). ")
         target_id = input("Alternatively, type \"list\" to see a list of all prestages and their IDs: ")
         if target_id == "list":
             print()
             for prestage in scope_names:
                 print(f"{scope_names[prestage]}: {prestage}")
-        elif target_id.isnumeric():
-            if target_id not in scope_names:
+        elif target_id.isnumeric() or target_id == "-1":
+            if target_id not in scope_names and target_id != "-1":
                 print("\nThis does not appear to be a valid prestage ID number.")
                 target_id = ""
+        elif target_id == "" and jamf_set_default_id != "":
+            target_id = jamf_set_default_id
         else:
             for prestage in scope_names:
                 if target_id.lower() == scope_names[prestage].lower():
@@ -396,7 +401,7 @@ try:
         print("\nExact mode enabled. Please enter the ID of the prestage you want extra devices to be moved to. ")
         print("Type \"-1\" to leave extra devices unassigned from any prestage.")
         if jamf_set_default_id != "":
-            print(f"Leave blank to use default Prestage set in Jamf ({scope_names[jamf_set_default_id]}) ")
+            print(f"Leave blank to use default Prestage set in Jamf ({scope_names[jamf_set_default_id]}). ")
         default_prestage_id = input("Alternatively, type \"list\" to see a list of all prestages and their IDs: ")
         if default_prestage_id == "list":
             print()
