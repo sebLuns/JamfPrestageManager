@@ -28,7 +28,7 @@ Additional arguments can be used to set configuration options.
 * `--computer`           Use Computer Prestages
 * `--mobile`             Use Mobile Device Prestages
 * `--append`             Append all devices in CSV to a prestage
-* `--exact`              Move any devices not in CSV out of the target prestage.
+* `--exact`              Append all devices in CSV to a prestage and move any extra devices not in CSV out of the target prestage.
 * `--defaultid ID`       *Exact mode only:* The ID of the prestage you want all extra devices to be moved to. Use `0` to use the Default prestage in Jamf, or `-1` to leave devices unassigned.
 * `--defaultname NAME`   *Exact mode only:* The name of the prestage you want all extra devices to be moved to. Overrides `--defaultid`.
 * `--bulk`               Move devices in bulk groups.
