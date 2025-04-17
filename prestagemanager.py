@@ -56,7 +56,7 @@ bad_device_report = []
 
 
 #######################################################################
-###### BEGIN USER-SUPPLIED VARIABLES
+###### BEGIN USER-DEFINED DEFAULTS
 #######################################################################
 
 # Variables can be defined here to skip configuring 
