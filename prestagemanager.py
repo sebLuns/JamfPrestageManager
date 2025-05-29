@@ -306,8 +306,8 @@ try:
             speed = "bulk"
         else:
             speed = "granular"
-    elif op_mode.lower() == "bulk" or op_mode.lower() == "granular":
-        option = op_mode
+    elif speed_mode.lower() == "bulk" or speed_mode.lower() == "granular":
+        speed = speed_mode
     else:
         print("\nThe \"Bulk\" setting will attempt to move devices en masse by their \nPrestage ID, which is faster.")
         print("\nThe \"Granular\" setting will move devices one by one by their serial \nnumber, which is slower-- but if one device causes an error then it \nwill not affect any other devices.")
