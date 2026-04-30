@@ -324,6 +324,7 @@ try:
     scopes_request = requests.get(scopes_url + "scope", headers=scopes_headers)
     scoped_serials = scopes_request.json()["serialsByPrestageId"]
 
+    scopes_url = scopes_url.replace("/v2/", "/v3/")
 
     # Get info of all scope names and IDs. Hard limit of 200 prestages.
     scope_info_request = requests.get(scopes_url + "?page-size=200&sort=displayName%3Aasc", headers=scopes_headers)
@@ -333,11 +334,14 @@ try:
     # Dictionary that will contain all prestage names, with their jamf IDs as keys
     scope_names = {}
 
+    print(scopes_url)
+
     for prestage in scope_info_request.json()['results']:
         scope_names[prestage['id']] = prestage['displayName']
         if prestage['defaultPrestage'] == True:
             jamf_set_default_id = prestage['id']
 
+    scopes_url = scopes_url.replace("/v3/", "/v2/")
 
     # Determine theoretical prestage max ID in order to determine bulk movements
     print(f'\nTotal number of scoped devices: {len(scoped_serials)}')
